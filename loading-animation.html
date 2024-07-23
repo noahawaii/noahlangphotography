@@ -1,0 +1,60 @@
+<!-- Loading Animation -->
+<div id="wm-loading-animation">
+  <div class="loading-graphic">
+    <img src="https://images.squarespace-cdn.com/content/v1/6226f62738f4f73d2b353e79/f7f0d350-1a95-4178-8aa6-39c05a527ef9/noahawaii.png?format=1000w">
+  </div>
+</div>
+
+<script>
+  function hideAnimation(){
+    document.querySelector("#wm-loading-animation").classList.add("hide-animation");
+  }
+  setTimeout(function(){ 
+    setTimeout(function(){ 
+      hideAnimation()
+    }, 500); 
+    let checkLoad = setInterval(function(){
+      if (document.readyState === "complete"){
+        hideAnimation();
+        clearInterval(checkLoad)
+      }
+    }, 1);
+  }, 1000);
+</script>
+
+<style>
+#wm-loading-animation img{
+  height:150px;
+  width:auto;
+}
+#wm-loading-animation{
+  height:100vh;
+  width:100vw;
+  background:#fff;
+  position:fixed;
+  z-index: 99999999999999999999999999999999999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.wm-slider-container .dots-container{
+  left: unset !important;
+  transform: unset !important;
+  right: 3vw
+}
+@keyframes pulse{
+  0%{ transform:scale(1.1)} 
+  50%{ transform:scale(0.9)} 
+  100%{ transform:scale(1.1)} 
+}
+.loading-graphic{
+  animation: pulse 3s ease-in-out infinite;
+}
+#wm-loading-animation.hide-animation{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s,
+    opacity 1s linear;
+}
+</style>
+<!-- End Loading Animation -->
